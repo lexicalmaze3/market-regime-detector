@@ -71,11 +71,10 @@ def print_regime_stats(stats: pd.DataFrame, regime_labels: dict[int, str]) -> No
 def print_comparison(hmm_df: pd.DataFrame, gmm_df: pd.DataFrame,
                      hmm_labels: dict[int, str], gmm_labels: dict[int, str],
                      n_regimes: int) -> None:
-    total = len(hmm_df)
-
     def label_pcts(df: pd.DataFrame, labels: dict[int, str]) -> dict[str, float]:
+        n = len(df)
         return {
-            labels[r]: (df["regime"] == r).sum() / total * 100
+            labels[r]: (df["regime"] == r).sum() / n * 100
             for r in range(n_regimes)
         }
 

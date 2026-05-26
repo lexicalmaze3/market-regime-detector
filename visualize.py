@@ -84,7 +84,8 @@ def add_regime_bands(ax, df: pd.DataFrame, regime_col: str,
         while j < len(dates) and regimes[j] == regimes[i]:
             j += 1
         lbl = label_map[regimes[i]]
-        ax.axvspan(dates[i], dates[j - 1], color=COLORS[lbl], alpha=alpha, linewidth=0)
+        end = dates[j] if j < len(dates) else dates[-1] + pd.Timedelta(days=2)
+        ax.axvspan(dates[i], end, color=COLORS[lbl], alpha=alpha, linewidth=0)
         i = j
 
 

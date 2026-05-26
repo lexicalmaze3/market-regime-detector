@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+
+# generated data — run data/fetch.py + data/features.py to reproduce
+data/spy_raw.csv
+data/spy_features.csv
+data/spy_regimes_hmm.csv
+data/spy_regimes_gmm.csv
+
+# generated plots — run visualize.py to reproduce
+results/

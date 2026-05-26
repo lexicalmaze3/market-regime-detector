@@ -41,7 +41,7 @@ def _build_label_map() -> dict[int, str]:
     """Derive regime-id → label mapping from the saved training history."""
     df = pd.read_csv(_HISTORY_CSV, index_col="date", parse_dates=True)
     rows = []
-    for r in df["regime"].unique():
+    for r in range(4):
         mask = df["regime"] == r
         rows.append({
             "regime":      r,
@@ -112,7 +112,6 @@ def _engineer_features(raw: pd.DataFrame) -> pd.DataFrame:
     feat["trend_21"]    = feat["returns"].rolling(21).mean()
     feat["range"]       = (high - low) / close
     feat["vol_ratio"]   = feat["vol_5"] / feat["vol_21"]
-    feat["momentum_21"] = close / close.shift(21) - 1
     feat["momentum_63"] = close / close.shift(63) - 1
 
     feat.dropna(inplace=True)

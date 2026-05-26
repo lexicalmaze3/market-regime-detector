@@ -22,7 +22,6 @@ def build_features():
     feat["trend_21"] = feat["returns"].rolling(21).mean()
     feat["range"] = (high - low) / close
     feat["vol_ratio"] = feat["vol_5"] / feat["vol_21"]
-    feat["momentum_21"] = close / close.shift(21) - 1
     feat["momentum_63"] = close / close.shift(63) - 1
 
     feat.dropna(inplace=True)
